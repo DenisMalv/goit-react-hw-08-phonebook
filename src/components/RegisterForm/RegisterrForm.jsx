@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { register } from 'redux/authOperations/authOperations';
+
 export const RegisterForm = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -31,7 +33,8 @@ export const RegisterForm = () => {
     event.preventDefault();
     const user = { name, email, password };
     console.log('newUser RegisterForm', user);
-    reset();
+    dispatch(register(user));
+    // reset();
   };
 
   const reset = () => {
@@ -40,8 +43,12 @@ export const RegisterForm = () => {
     setPassword('');
   };
 
+  //   hjkliop
+  // hjkliop@mail.com
+  // hjkliop
+
   return (
-    <form autoComplete="off" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <label>
         <span>name</span>
         <input
