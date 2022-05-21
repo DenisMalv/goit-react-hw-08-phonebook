@@ -5,11 +5,12 @@ import { lazy, Suspense } from 'react';
 // import ContactList from './ContactList/ContactList';
 import { Routes, Route } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { reLoginUSer } from 'redux/authOperations/authOperations';
 
 import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
+import { getIsLoggining } from 'redux/userSlice/userSlice';
 
 const HomePage = lazy(() => import('pages/HomePage.js'));
 const RegisterPage = lazy(() => import('pages/RegisterPage.js'));
@@ -29,44 +30,49 @@ const PublicRoute = lazy(() => import('pages/PublicRoute.js'));
 
 const App = () => {
   const dispatch = useDispatch();
+  const IsLoginning = useSelector(getIsLoggining);
   useEffect(() => {
     dispatch(reLoginUSer());
     //useNavigate bydem usat`
   }, [dispatch]);
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          ></Route>
+    <>
+      {/* {IsLoginning && <Loader />} */}
+      {/* {!IsLoginning && ( */}
 
-          <Route path="*" element={<Page404 />} />
-        </Route>
-      </Routes>
-    </Suspense>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="register"
+              element={
+                <PublicRoute>
+                  <RegisterPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route path="*" element={<Page404 />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   );
   // }
 };

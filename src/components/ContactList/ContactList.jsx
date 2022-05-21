@@ -12,11 +12,13 @@ import {
   getError,
 } from 'redux/contactsSlice/contactsSlice';
 import { fetchContactsThunk } from 'redux/contactsOperations/contactsOperations';
+import { getIsLoggining } from 'redux/userSlice/userSlice';
 
 const ContactList = () => {
   const contactsList = useSelector(getContacts);
   const filteredContacts = useSelector(getFilterValue);
   const isLoading = useSelector(getLoading);
+  const isLoginning = useSelector(getIsLoggining);
   const isError = useSelector(getError);
   const dispatch = useDispatch();
   //маунт списка при первой загрузке.
@@ -42,7 +44,7 @@ const ContactList = () => {
   return (
     <>
       {/* loader */}
-      {isLoading && (
+      {isLoading && getFilteredContacts().length === 0 && (
         <LoaderBackground>
           <Loader />
         </LoaderBackground>
@@ -50,7 +52,7 @@ const ContactList = () => {
       {/* error */}
       {isError && <h1>Error 404 :D</h1>}
       {/* notFound */}
-      {getFilteredContacts().length === 0 && (
+      {getFilteredContacts().length === 0 && !isLoading && (
         <p style={{ textAlign: 'center', fontSize: 24, fontWeight: 700 }}>
           Contact not found
         </p>
