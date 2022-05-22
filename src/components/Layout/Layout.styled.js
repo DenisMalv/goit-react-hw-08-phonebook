@@ -3,9 +3,10 @@ import { Link, NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   display: block;
-  background: linear-gradient(#787878, #e4fcff);
+  background: linear-gradient(#003a3efc, #7ce6f42b);
   min-height: 50px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
+  z-index: -2;
 `;
 
 export const Homepage = styled(Link)`
@@ -26,7 +27,7 @@ export const Homepage = styled(Link)`
 
 export const Footer = styled.footer`
   display: block;
-  background: linear-gradient(#e4fcff, #787878);
+  background: linear-gradient(#7ce6f42b, #003a3efc);
   min-height: 50px;
   text-align: center;
 `;
@@ -72,6 +73,12 @@ export const NavMovie = styled(NavLink)`
 `;
 
 export const MainContent = styled.main`
+   background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+   rgb(255 255 255 / 0%) 0%, rgb(121 255 251 / 85%) 49%, rgb(255 255 255 / 0%) 100% );
+  );
   min-height: 84.3vh;
   font-family: Roboto;
+  padding:20px 0
 `;

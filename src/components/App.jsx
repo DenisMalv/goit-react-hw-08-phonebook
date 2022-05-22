@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react';
 import { lazy, Suspense } from 'react';
-// import Filter from './Filter/Filter';
-// import ContactForm from './ContactForm/ContactForm';
-// import ContactList from './ContactList/ContactList';
 import { Routes, Route } from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { reLoginUSer } from 'redux/authOperations/authOperations';
 
 import Layout from './Layout/Layout';
 import Loader from './Loader/Loader';
-import { getIsLoggining } from 'redux/userSlice/userSlice';
+// import { getIsLoggining } from 'redux/userSlice/userSlice';
 
 const HomePage = lazy(() => import('pages/HomePage.js'));
 const RegisterPage = lazy(() => import('pages/RegisterPage.js'));
@@ -30,7 +27,7 @@ const PublicRoute = lazy(() => import('pages/PublicRoute.js'));
 
 const App = () => {
   const dispatch = useDispatch();
-  const IsLoginning = useSelector(getIsLoggining);
+  // const IsLoginning = useSelector(getIsLoggining);
   useEffect(() => {
     dispatch(reLoginUSer());
     //useNavigate bydem usat`

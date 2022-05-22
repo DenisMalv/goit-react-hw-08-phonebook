@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import { RegisterLink, LoginLink, AuthContainer } from './AuthMenu.styled';
 import { getIsLoggining } from 'redux/userSlice/userSlice';
 import { useSelector } from 'react-redux';

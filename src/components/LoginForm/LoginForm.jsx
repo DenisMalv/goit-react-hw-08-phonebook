@@ -1,17 +1,21 @@
+import css from './LoginForm.module.css';
+
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getState, getIsLoggining } from 'redux/userSlice/userSlice';
+import { getState } from 'redux/userSlice/userSlice';
 import { login } from 'redux/authOperations/authOperations';
 
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const state = useSelector(getState);
-  const loading = useSelector(getIsLoggining);
+  // const loading = useSelector(getIsLoggining);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleImputChange = event => {
     const { name, value } = event.currentTarget;
@@ -33,8 +37,9 @@ export const LoginForm = () => {
     const userLogin = { email, password };
     console.log('user loginForm', userLogin);
     console.log('state', state);
-    console.log('loading', loading);
+    // console.log('loading', loading);
     dispatch(login(userLogin));
+    navigate('/contacts');
     reset();
   };
 
@@ -47,8 +52,12 @@ export const LoginForm = () => {
   };
 
   return (
-    <form autoComplete="off" onSubmit={handleSubmit}>
-      <label>
+    <form
+      autoComplete="off"
+      onSubmit={handleSubmit}
+      className={css.contactForm}
+    >
+      <label className={css.contactForm__label}>
         <span>email</span>
         <input
           type="email"
@@ -57,7 +66,7 @@ export const LoginForm = () => {
           onChange={handleImputChange}
         />
       </label>
-      <label>
+      <label className={css.contactForm__label}>
         password
         <input
           type="password"
@@ -66,7 +75,9 @@ export const LoginForm = () => {
           onChange={handleImputChange}
         />
       </label>
-      <button type="submit">Login</button>
+      <button type="submit" className={css.contactForm__button}>
+        Login
+      </button>
     </form>
   );
 };

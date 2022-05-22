@@ -28,7 +28,7 @@ export const RegisterLink = styled(NavLink)`
     top: 0;
     height: 0;
     width: 100%;
-    z-index: 0;
+    z-index: -1;
     color: white;
     // background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
     background: linear-gradient(
@@ -49,6 +49,10 @@ export const RegisterLink = styled(NavLink)`
     span {
       position: relative;
     }
+  }
+  &.active {
+    color: #00cdd5;
+    pointer-events: none;
   }
 `;
 
@@ -74,7 +78,7 @@ export const LoginLink = styled(NavLink)`
     top: 0;
     height: 0;
     width: 100%;
-    z-index: 0;
+    z-index: -1;
     color: white;
     // background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
     background: linear-gradient(
@@ -93,8 +97,12 @@ export const LoginLink = styled(NavLink)`
       height: 100%;
     }
     span {
-      position: relative;
+      // position: relative;
       //   color: black;
     }
+  }
+  &.active {
+    color: #00cdd5;
+    pointer-events: none;
   }
 `;

@@ -1,19 +1,20 @@
-import { useLocation } from 'react-router-dom';
-// import { useMovies } from 'hooks/useMovies';
-
-// import {
-//   HomePageList,
-//   Film,
-//   FilmLink,
-//   FilmDescriptionContainer,
-//   FilmRating,
-//   FilmTitle,
-// } from './HomePage.styled';
-
+import { useSelector } from 'react-redux';
+import { getIsLogin } from 'redux/userSlice/userSlice';
 const HomePage = () => {
+  const isLogin = useSelector(getIsLogin);
   return (
     <>
-      <p>HomePAge</p>
+      <h1 style={{ textAlign: 'center' }}>HOMEPAGE </h1>
+      {!isLogin && (
+        <p style={{ textAlign: 'center', fontSize: 24 }}>
+          Please logIn for more...
+        </p>
+      )}
+      {isLogin && (
+        <p style={{ textAlign: 'center', fontSize: 24 }}>
+          welcome to your phonebook
+        </p>
+      )}
     </>
   );
 };

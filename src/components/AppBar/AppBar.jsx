@@ -3,7 +3,7 @@ import {
   NavContacts,
   Navigation,
   AppBarContainer,
-  Helper,
+  // Helper,
 } from './AppBar.styled';
 import { useSelector } from 'react-redux';
 import { getIsLogin } from 'redux/userSlice/userSlice';
@@ -15,16 +15,22 @@ export const AppBar = () => {
   return (
     <AppBarContainer>
       <Navigation>
-        <NavHomepage to="/">Homepage</NavHomepage>
-        {isLogin && <NavContacts to="/contacts">Contacts</NavContacts>}
-        <Helper>
+        <NavHomepage to="/">
+          <span>Homepage</span>
+        </NavHomepage>
+        {isLogin && (
+          <NavContacts to="/contacts">
+            <span>Contacts</span>
+          </NavContacts>
+        )}
+        {/* <Helper>
           <p>Test1 Acc: qwertyuiqq@gmail.com</p>
           <p>Test1 Pass : 1234567890qq</p>
         </Helper>
         <Helper>
           <p>Test2 Acc : zxcvbnmqq@mail.com</p>
           <p>Test2 Pass : zxcvbnmqq</p>
-        </Helper>
+        </Helper> */}
       </Navigation>
       {isLogin ? <UserMenu /> : <AuthMenu />}
     </AppBarContainer>

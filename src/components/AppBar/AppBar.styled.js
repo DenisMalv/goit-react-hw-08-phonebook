@@ -15,14 +15,48 @@ export const Navigation = styled.nav`
 `;
 
 export const NavHomepage = styled(NavLink)`
-  font-family: Roboto;
-  font-weight: 700;
-  font-size: 24px;
   text-decoration: none;
-  color: #282828;
-  transition: color 400ms ease;
+  outline: none;
+  color: white;
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  border: 1px solid;
+  //   border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    // background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 230, 255, 1) 0%,
+      rgba(0, 93, 92, 1) 36%,
+      rgba(1, 0, 16, 1) 100%
+    );
+    transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
   &:hover {
-    color: #00cee4;
+    background: rgba(255, 255, 255, 0);
+    &:before {
+      bottom: 0%;
+      top: auto;
+      height: 100%;
+    }
+    span {
+      position: relative;
+    }
   }
   &.active {
     color: #00cdd5;
@@ -31,15 +65,48 @@ export const NavHomepage = styled(NavLink)`
 `;
 
 export const NavContacts = styled(NavLink)`
-  font-family: Roboto;
-  font-weight: 700;
-  font-size: 24px;
   text-decoration: none;
-  color: #282828;
+  outline: none;
+  color: white;
+  display: inline-block;
+  position: relative;
+  padding: 15px 20px;
+  border: 1px solid;
+  //   border-image: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+  border-image-slice: 1;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  transition: color 400ms ease;
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    // background: linear-gradient(180deg, #ff3000, #ed0200, #ff096c, #d50082);
+    background: linear-gradient(
+      0deg,
+      rgba(0, 230, 255, 1) 0%,
+      rgba(0, 93, 92, 1) 36%,
+      rgba(1, 0, 16, 1) 100%
+    );
+    transition: 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
   &:hover {
-    color: #00cee4;
+    background: rgba(255, 255, 255, 0);
+    &:before {
+      bottom: 0%;
+      top: auto;
+      height: 100%;
+    }
+    span {
+      position: relative;
+    }
   }
   &.active {
     color: #00cdd5;

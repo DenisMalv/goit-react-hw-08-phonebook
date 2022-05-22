@@ -12,13 +12,11 @@ import {
   getError,
 } from 'redux/contactsSlice/contactsSlice';
 import { fetchContactsThunk } from 'redux/contactsOperations/contactsOperations';
-import { getIsLoggining } from 'redux/userSlice/userSlice';
 
 const ContactList = () => {
   const contactsList = useSelector(getContacts);
   const filteredContacts = useSelector(getFilterValue);
   const isLoading = useSelector(getLoading);
-  const isLoginning = useSelector(getIsLoggining);
   const isError = useSelector(getError);
   const dispatch = useDispatch();
   //маунт списка при первой загрузке.

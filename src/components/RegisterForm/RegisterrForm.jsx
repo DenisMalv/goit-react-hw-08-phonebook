@@ -1,3 +1,5 @@
+import css from './RegisterForm.module.css';
+
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -34,7 +36,7 @@ export const RegisterForm = () => {
     const user = { name, email, password };
     console.log('newUser RegisterForm', user);
     dispatch(register(user));
-    // reset();
+    reset();
   };
 
   const reset = () => {
@@ -48,8 +50,8 @@ export const RegisterForm = () => {
   // hjkliop
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form onSubmit={handleSubmit} className={css.contactForm}>
+      <label className={css.contactForm__label}>
         <span>name</span>
         <input
           type="name"
@@ -58,7 +60,7 @@ export const RegisterForm = () => {
           onChange={handleImputChange}
         />
       </label>
-      <label>
+      <label className={css.contactForm__label}>
         <span>email</span>
         <input
           type="email"
@@ -67,7 +69,7 @@ export const RegisterForm = () => {
           onChange={handleImputChange}
         />
       </label>
-      <label>
+      <label className={css.contactForm__label}>
         <span>password</span>
         <input
           type="password"
@@ -76,7 +78,9 @@ export const RegisterForm = () => {
           onChange={handleImputChange}
         />
       </label>
-      <button type="submit">Register</button>
+      <button type="submit" className={css.contactForm__button}>
+        Register
+      </button>
     </form>
   );
 };
